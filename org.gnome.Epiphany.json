@@ -14,7 +14,7 @@
         "--socket=wayland",
         "--system-talk-name=org.freedesktop.GeoClue2"
     ],
-   "modules": [
+    "modules": [
         {
             "name": "elementary-icons",
             "buildsystem": "meson",
@@ -145,20 +145,23 @@
             ]
         },
         {
-           "name": "gstreamer",
+           "name": "gstreamer-vaapi",
              "cleanup": [
                "*"
           ],
            "config-opts": [
-              "-Dvaapi=enabled"
+              "-Dwayland=enabled",
+              "-Degl=enabled"
             ],
-            "buildsystem": "meson",
-            "sources": [
+           "buildsystem": "meson",
+           "subdir": "subprojects/gstreamer-vaapi",
+           "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer",
                     "commit": "1.22.6"
-                }]
+                }
+            ]
         },
         {
             "name": "epiphany",

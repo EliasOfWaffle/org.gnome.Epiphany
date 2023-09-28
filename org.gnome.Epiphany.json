@@ -14,7 +14,7 @@
         "--socket=wayland",
         "--system-talk-name=org.freedesktop.GeoClue2"
     ],
-   "modules": [
+    "modules": [
         {
             "name": "elementary-icons",
             "buildsystem": "meson",
@@ -145,20 +145,49 @@
             ]
         },
         {
-           "name": "gstreamer",
+           "name": "gstreamer-vaapi",
              "cleanup": [
                "*"
           ],
            "config-opts": [
-              "-Dvaapi=enabled"
+              "-Dwayland=enabled",
+              "-Degl=enabled",
+              "-Dtests=disabled",
+              "-Ddoc=disabled",
+              "-Dexamples=disabled"
             ],
-            "buildsystem": "meson",
-            "sources": [
+           "buildsystem": "meson",
+           "subdir": "subprojects/gstreamer-vaapi",
+           "sources": [
                 {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer",
                     "commit": "1.22.6"
-                }]
+                }
+            ]
+        },
+        {
+          "name": "gst-bad-plugins",
+          "buildsystem": "meson",
+          "subdir": "subprojects/gst-plugins-bad",
+          "config-opts": [
+             "-Dvulkan=enabled",
+             "-Dexamples=disabled",
+             "-Dtests=disabled",
+             "-Dintrospection=disabled",
+             "-Dwayland=enabled",
+             "-Dqsv=enabled",
+             "-Dva=enabled"
+           ],
+         "buildsystem": "meson",
+         "subdir": "subprojects/gst-bad-plugins",
+         "sources": [
+               { 
+                "type": "git",
+                "url": "https://gitlab.freedesktop.org/gstreamer/gstreamer",
+                "commit": "1.22.6"
+             }
+          ]
         },
         {
             "name": "epiphany",

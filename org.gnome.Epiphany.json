@@ -25,6 +25,7 @@
                     "commit": "5b7ffe85cded2fa3ce682510706601c1289da004"
                 }
             ],
+        },
             "modules": [
                 {
                     "name": "xcursorgen",
